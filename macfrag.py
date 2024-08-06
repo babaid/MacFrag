@@ -453,23 +453,23 @@ def write_file(input_file, dir, maxBlocks, maxSR, asMols, minFragAtoms):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='MacFrag - Molecular Fragmentation')
-    parser.add_argument('-input_file', '-i', required=True, type=str,                       
-                        help='.smi or .sdf file of molecules to be fragmented')    
+    parser.add_argument('--input_file', '-i', required=True, type=str,                       
+                        help='File with smi, sdf or mol2 extension of  the molecules to be fragmented')    
     
-    parser.add_argument('-output_path', '-o', required=True, type=str,
-                        help='path of the output fragments file')
+    parser.add_argument('--output_path', '-o', required=True, type=str,
+                        help='Path of the output fragments file.')
     
-    parser.add_argument('-maxBlocks', default=1, type=int,
-                        help='the maximum number of building blocks that the fragments contain')
+    parser.add_argument('--max-blocks', default=1, type=int,
+                        help='The maximum number of building blocks that the fragments contain')
     
-    parser.add_argument('-maxSR', default=8, type=int,
-                        help='only cyclic bonds in smallest SSSR ring of size larger than this value will be cleaved')
+    parser.add_argument('--max-rs', default=8, type=int,
+                        help='Number of maximum bonds in a ring. If its bigger than this, the ring gets cleaved.')
 
-    parser.add_argument('-asMols',  default=True, type=bool,
-                        help='True of False; if True, MacFrag will reture fragments as molecules and the fragments.sdf file will be output; if False, MacFrag will reture fragments.smi file with fragments representd as SMILES strings')
+    parser.add_argument('--as-sdf',  default=True, type=bool,
+                        help='If set to true molecules will be saved as SDF structures, else only the SMILES strings get saved.')
     
-    parser.add_argument('-minFragAtoms',  default=3, type=int,
-                        help='the minimum number of atoms that the fragments contain')
+    parser.add_argument('--n-min-frag-atoms',  default=3, type=int,
+                        help='The minimum number of atoms that the fragments should contain.')
 
     return parser.parse_args()
 
@@ -477,4 +477,4 @@ def parse_args():
 if __name__ == '__main__':    
     args = parse_args()
     write_file(args.input_file, args.output_path,
-               args.maxBlocks, args.maxSR, args.asMols, args.minFragAtoms)
+               args.max_blocks, args.max_rs, args.as_sdf, args.n_min_frag_atoms)
