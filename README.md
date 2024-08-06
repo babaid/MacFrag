@@ -10,7 +10,7 @@ http://lilab-ecust.cn/
 
 ## Modifications
 
-With my current modifications you can also use a mol2 file with a large molecule that you want to fragment. If you have an issue with the code that can possibly due to rdkit not being able to load your molecule(s), but you should now get a warning if something went wrong. I also added default parameters and made an examples and _data directory so it looks nicer.
+With my current modifications you can also use a mol2 file with a large molecule that you want to fragment. If you have an issue with the code that can possibly be due to rdkit not being able to load your molecule(s), but you should now get a warning if something went wrong. I also added default parameters and made an examples and _data directory so it looks nicer.
 
 ## Usage
 
